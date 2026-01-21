@@ -1,13 +1,14 @@
 import './App.scss';
 import { MoviesList } from './components/MoviesList';
 import moviesFromServer from './api/movies.json';
+import { useState } from 'react';
 
 function prepareFilms(query){
   let movies = moviesFromServer;
   const normalizedQuery = query.trim().toLowerCase();
   if(normalizedQuery){
-    movies = movies.filter((movie) => movie.title.includes(query) ||
-    movie.description.includes(query))
+    movies = movies.filter((movie) => movie.title.includes(normalizedQuery) ||
+    movie.description.includes(normalizedQuery))
   }
  return movies;
 }
@@ -36,7 +37,7 @@ export const App = () => {
         </div>
       </div>
 
-      <MoviesList movies={moviesFromServer} />
+      <MoviesList movies={visibleMovies} />
     </div>
 
     <div className="sidebar">Sidebar goes here</div>
