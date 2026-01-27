@@ -7,8 +7,8 @@ function prepareFilms(query){
   let movies = moviesFromServer;
   const normalizedQuery = query.trim().toLowerCase();
   if(normalizedQuery){
-    movies = movies.filter((movie) => movie.title.includes(normalizedQuery) ||
-    movie.description.includes(normalizedQuery))
+    movies = movies.filter((movie) => movie.title.toLowerCase().includes(normalizedQuery) ||
+    movie.description.toLowerCase().includes(normalizedQuery))
   }
  return movies;
 }
